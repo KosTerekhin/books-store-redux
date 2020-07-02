@@ -20,7 +20,7 @@ router.get('/:id', idCheck, async (req, res) => {
 });
 
 // update books's text
-router.put('/:id', [ idCheck, nicknameCheck ], async (req, res) => {
+router.put('/:id', async (req, res) => {
 	const book = {};
 	Object.keys(req.body).forEach((key) => {
 		book[key] = req.body[key];
