@@ -8,7 +8,7 @@ import { selectFirstNotification } from '../../redux/selectors/notifications.sel
 import { selectStatus } from '../../redux/selectors/ui.selector';
 import { selectBookList, selectBookImages } from '../../redux/selectors/books.selector';
 
-import withPagination from '../../hoc/pangination/pangination.component.hooks';
+import withPagination from '../../hoc/pangination/withPagination';
 import LandingItem from './landing-item.component';
 import { withRouter } from 'react-router';
 
