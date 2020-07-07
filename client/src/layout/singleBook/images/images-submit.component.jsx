@@ -8,7 +8,6 @@ import { putSinglebookImages } from '../../../redux/actions/singlebook.actions';
 
 const ImagesSubmit = ({ putSinglebookImages, data }) => {
 	const fileInput = React.createRef();
-	console.log(fileInput.current);
 	return (
 		<Form
 			onSubmit={(e) => {

@@ -2,7 +2,7 @@ const Books = require('../schema/Books');
 
 const nicknameCheck = async (req, res, next) => {
 	try {
-		let book = await Books.findOne({ nickname: req.body.nickname });
+		let book = await Books.findOne({ title: req.body.title });
 		if (book && book._id != req.params.id) {
 			return res.status(401).send('Another book already has this title, try a different one');
 		}

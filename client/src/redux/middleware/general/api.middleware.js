@@ -7,7 +7,6 @@ export const apiMiddleware = ({ dispatch }) => (next) => (action) => {
 
 	if (action.type.includes(API_REQUEST)) {
 		const { body: data, meta: { url, method, feature, contentType } } = action;
-		console.log(data);
 		axios({
 			method,
 			url,

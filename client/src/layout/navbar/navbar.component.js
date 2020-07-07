@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavbarOverlay } from './navbar.styles';
+import { NavbarOverlay, NavRightButtons } from './navbar.styles';
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 
@@ -13,7 +13,12 @@ const NavBar = (props) => {
 			<Button variant={state ? 'dark' : 'warning'} onClick={() => history.push('/')}>
 				Home
 			</Button>
-			<div onClick={handleClick}>{state ? '🌞' : '🌑'}</div>
+			<NavRightButtons>
+				<Button variant="info" className="mr-4" onClick={() => history.push('/add-book')}>
+					Add Book
+				</Button>
+				<div onClick={handleClick}>{state ? '🌞' : '🌑'}</div>
+			</NavRightButtons>
 		</NavbarOverlay>
 	);
 };

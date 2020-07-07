@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { nicknameCheck, idCheck } = require('../config/validations');
+const { idCheck } = require('../config/validations');
 
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);

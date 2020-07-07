@@ -16,15 +16,13 @@ import {
 	setSinglebookError,
 	singlebookImagesUpdateStore
 } from '../../actions/singlebook.actions';
-
-import { SINGLE_BOOK_SCHEMA, SINGLE_BOOK_IMAGES_SCHEMA } from '../../actions/normalize.actions';
 import { updateLoading, clearLoading } from '../../actions/ui.actions';
 import { apiRequest, API_SUCCESS, API_ERROR } from '../../actions/api.actions';
 import { updateNotification } from '../../actions/notifications.actions';
+import { SINGLE_BOOK_SCHEMA, SINGLE_BOOK_IMAGES_SCHEMA } from '../../actions/normalize.actions';
 
 export const singlebookMiddleware = ({ getState }) => (next) => (action) => {
 	next(action);
-	console.log('middleware');
 	switch (action.type) {
 		// FETCH ALL DATA
 		case `${CLIENT} ${SINGLE_BOOK_FETCH}`:

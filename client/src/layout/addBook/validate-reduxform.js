@@ -1,6 +1,6 @@
-export const validate = (values) => {
+export const validateReduxFrom = (values) => {
 	const errors = {};
-
+	console.log(values);
 	if (!values.title) {
 		errors.title = 'Required';
 	}

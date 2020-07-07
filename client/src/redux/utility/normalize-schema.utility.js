@@ -1,7 +1,6 @@
 import { normalize, schema } from 'normalizr';
 
 export const applyBooksSchema = (action) => {
-	console.log(action.payload);
 	const images = new schema.Entity('images');
 	const book = new schema.Entity(
 		'bookList',
@@ -15,6 +14,24 @@ export const applyBooksSchema = (action) => {
 	const final = { payload: [ book ] };
 
 	return normalize(action, final).entities;
+};
+
+export const applyNewBookSchema = (action) => {
+	// const images = new schema.Entity('images');
+	// const book = new schema.Entity(
+	// 	'bookList',
+	// 	{
+	// 		images: [ images ]
+	// 	},
+	// 	{
+	// 		idAttribute: '_id'
+	// 	}
+	// );
+	// const final = { payload: [ book ] };
+
+	// return normalize(action, final).entities;
+	console.log(action.payload);
+	return action;
 };
 
 export const applySinglebookSchema = (action) => {

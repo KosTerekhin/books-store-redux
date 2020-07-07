@@ -36,6 +36,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', upload.single('images'), [ fileFilter, textFieldCheck, nicknameCheck ], async (req, res) => {
+	console.log(req.body);
 	const newBook = {};
 	// uploading image to the cloudinary
 	await cloudinary.v2.uploader.upload(req.file.path, (err, result) => {

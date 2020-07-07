@@ -12,23 +12,29 @@ const withPagination = (WrappedComponent) => (props) => {
 
 	return (
 		<Container>
-			<Form.Group>
-				<Form.Label>Books per page</Form.Label>
-				<Form.Control
-					as="select"
-					value={itemsPerPage}
-					onChange={(e) => handleChange(e.target.value)}
-					style={{ maxWidth: '10%' }}
-				>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</Form.Control>
-			</Form.Group>
-			<WrappedComponent {...props} paginatedList={paginatedList} />
+			<Row className="px-2">
+				<Form.Group>
+					<Form.Label>Books per page</Form.Label>
+					<Form.Control
+						as="select"
+						value={itemsPerPage}
+						onChange={(e) => handleChange(e.target.value)}
+						style={{
+							maxWidth: '55%'
+						}}
+					>
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</Form.Control>
+				</Form.Group>
+			</Row>
 			<Row>
+				<WrappedComponent {...props} paginatedList={paginatedList} />
+			</Row>
+			<Row className="mb-3">
 				<Col className="d-flex justify-content-center">
 					<Button variant="secondary" className="mr-2" onClick={handlePreviousClick}>
 						previous

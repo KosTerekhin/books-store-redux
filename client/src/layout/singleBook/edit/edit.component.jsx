@@ -8,19 +8,24 @@ import { Form, Button, Alert } from 'react-bootstrap';
 
 import { selectSinglebookData } from '../../../redux/selectors/singlebook.selector';
 import { singlebookTextPut } from '../../../redux/actions/singlebook.actions';
-import { validate } from '../validate';
+import { validateReduxFrom } from '../validate-reduxform';
 
-let EditComponent = ({ book, history, singlebookTextPut, handleSubmit }) => {
+let EditComponent = ({ book, history, singlebookTextPut }) => {
 	!book && history.push('/');
 	return book ? (
-		<Form className="ml-5" onSubmit={handleSubmit(() => singlebookTextPut(book._id))}>
+		<Form
+			className="ml-5"
+			onSubmit={(e) => {
+				e.preventDefault();
+				singlebookTextPut(book._id);
+			}}
+		>
 			{Object.keys(book).map((data, i) => {
 				if (data !== 'images' && data !== '__v' && data !== '_id') {
 					return (
 						<Form.Group key={data + i} className="mt-3">
 							<Form.Label>{data}</Form.Label>
 							<Field name={data} component={renderInput} type="text" />
-							<br />
 						</Form.Group>
 					);
 				}
@@ -35,7 +40,7 @@ let EditComponent = ({ book, history, singlebookTextPut, handleSubmit }) => {
 
 const renderInput = ({ input, meta }) => (
 	<div className="d-flex">
-		<input {...input} style={{ width: '80%' }} />
+		<input {...input} style={{ width: '40%' }} />
 		{meta.error &&
 		meta.touched && (
 			<Alert variant="danger" style={{ maxWidth: '15%' }}>
@@ -45,27 +50,21 @@ const renderInput = ({ input, meta }) => (
 	</div>
 );
 
-// EditComponent = reduxForm({
-// 	form: 'editDetails',
-// 	enableReinitialize: true,
-// 	validate
-// })(EditComponent);
-
-const stateToProps = createStructuredSelector({
+const mapToProps = createStructuredSelector({
 	book: selectSinglebookData,
 	initialValues: selectSinglebookData
 });
 
-const mapToProps = (dispatch) => ({
+const dispatchProps = (dispatch) => ({
 	singlebookTextPut: (id) => dispatch(singlebookTextPut(id))
 });
 
 export default compose(
-	connect(stateToProps, mapToProps),
+	connect(mapToProps, dispatchProps),
 	reduxForm({
 		form: 'editDetails',
 		enableReinitialize: true,
-		validate
+		validateReduxFrom
 	}),
 	withRouter
 )(EditComponent);
