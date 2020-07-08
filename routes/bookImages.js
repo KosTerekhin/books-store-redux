@@ -17,6 +17,7 @@ cloudinary.config({
 const Books = require('../schema/Books');
 
 router.put('/:id', upload.array('images'), [ multipleFileFilter, idCheck ], async (req, res) => {
+	console.log(req.files);
 	try {
 		var books = await Books.findOne({ _id: req.params.id });
 

@@ -27,6 +27,7 @@ router.put('/:id', async (req, res) => {
 	});
 	try {
 		const updatedBook = await Books.findOneAndUpdate({ _id: req.params.id }, { $set: book }, { new: true });
+		console.log(updatedBook);
 		return res.json(updatedBook);
 	} catch (err) {
 		return res.status(500).send('Internal Server Error');
