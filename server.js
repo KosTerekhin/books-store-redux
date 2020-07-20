@@ -25,10 +25,11 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
-app.use('/api/superheroes', require('./routes/superheroes'));
-app.use('/api/sample', require('./routes/sampleData'));
-app.use('/api/solohero', require('./routes/soloHero'));
-app.use('/api/images', require('./routes/images'));
+// app.use('/api/superheroes', require('./routes/superheroes'));
+// app.use('/api/sample', require('./routes/sampleData'));
+// app.use('/api/solohero', require('./routes/soloHero'));
+// app.use('/api/images', require('./routes/images'));
+app.use('/api/cities', require('./routes/cities'));
 
 app.use('/api/books', require('./routes/books'));
 app.use('/api/sampleBooks', require('./routes/booksSampleData'));
