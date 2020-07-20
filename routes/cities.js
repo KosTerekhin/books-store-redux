@@ -4,11 +4,9 @@ const cities = require('cities.json');
 
 router.get('/', async (req, res) => {
 	const filterList = [ 'UA' ];
-
-	const regex = new RegExp(`^${req.body}`, 'gi');
+	const regex = new RegExp(`^${req.query.character}`, 'gi');
 
 	const data = cities.filter(({ country }) => filterList.includes(country)).filter(({ name }) => name.match(regex));
-
 	return res.json(data);
 });
 
